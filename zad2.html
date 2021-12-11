@@ -68,10 +68,10 @@
 				<label for "data1">Data ograniczona</label>
 				<input class = "validation" type = "date" id = "data1" name = "data1"><br>
 				<label for="appt">Godzina 24h</label>
-				<input type="text" id="godzina24" placeholder="00:00" name="godzina24"pattern="[0-2]{1}[0-9]{1}:[0-9]{2}">
+				<input type="time"min='00:00' max='24:00' id="godzina24" placeholder="00:00" name="godzina24"pattern="[0-2]{1}[0-9]{1}:[0-9]{2}">
 				<br>
 				<label for="appt">Godzina 12h</label>
-				<input class = "validation" placeholder="00:00am" type="text"  id="godzina12" name="godzina12" pattern="1[0-2]{1}:[0-9]{2}[ap]m|0[0-9]{1}:[0-9]{2}[ap]m">
+				<input class = "validation" placeholder="00:00am" type="time" min='00:00' max='12:00' id="godzina12" name="godzina12" pattern="1[0-2]{1}:[0-9]{2}[ap]m|0[0-9]{1}:[0-9]{2}[ap]m">
 				<br>
 				<label for="color_pick">Kolor: </label>
 				<input type="color" id="color_pick"  name="color_pick" value="#ccff66">
