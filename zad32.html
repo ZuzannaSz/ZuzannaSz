@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title></title>
     <style media="screen">
+      body{
+        background-color: LightSeaGreen;
+      }
       .block{
           height : 40px;
           width : 50px;
@@ -24,25 +27,36 @@
   </head>
   <body>
       <div   id= "arena" class= "gamearena"  ondrop="drop(event)" ondragover="allowDrop(event)">
-        <ul id = "list" style="list-style-type:none;">
-          <li id = "1" draggable="true" ondragstart="drag(event)"  ><div class = "block"> </div></li>
-       </ul>
+
       </div>
       <div id = "buttonSpace">
-        <button type="button" name="button" onclick="generate">new element</button>
+        <button type="button" name="button" onclick="generate()">new element</button>
         </div>
         <div id = "generation">
           </div>
 
 
           <script>
-
-
-
-
-
-
+              const colors = ["red","yellow","blue","lightblue","orange","green","lightgreen","magenta"];
               var list = document.getElementById('list');
+
+            function generate(){
+              var div = document.createElement("div");
+              var id =document.getElementById("arena").getElementsByTagName("div").length;
+              div.setAttribute("id", id+1);
+              div.setAttribute("class","block");
+              div.setAttribute("draggable","true");
+              div.setAttribute("ondragstart","drag(event)");
+
+              const rand = Math.floor(Math.random() * colors.length);
+              div.style.background = colors[rand];
+              document.getElementById("generation").appendChild(div);
+            }
+
+
+
+
+
               var input = document.getElementById('form');
               input.onsubmit = function(event) {
               event.preventDefault();
@@ -67,11 +81,10 @@
 
              function drop(event) {
                event.preventDefault();
-
                var data = event.dataTransfer.getData("text");
                console.log(data);
                console.log( event.target.id);
-               if (event.target.id=="list"){
+               if (event.target.id=="arena"){
                    event.target.appendChild(document.getElementById(data));
                }
                else{
