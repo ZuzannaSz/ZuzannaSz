@@ -1,10 +1,11 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <style>
-      body{
+        html,body{
         background-color: LightSeaGreen;
+        height: 100%;
       }
       .block{
           height : 40px;
@@ -20,6 +21,9 @@
         ul{
           position:absolute;
           bottom:0;
+        }
+        .generation{
+          height: 12%;
         }
 
     </style>
@@ -52,21 +56,6 @@
               document.getElementById("generation").appendChild(div);
             }
 
-
-
-
-
-              var input = document.getElementById('form');
-              input.onsubmit = function(event) {
-              event.preventDefault();
-              var newValue = document.getElementById('new').value;
-              var id =document.getElementById("list").getElementsByTagName("li").length;
-              var newList = document.createElement('li');
-              newList.setAttribute("draggable", "true");
-              newList.setAttribute("id", id+1);
-              newList.setAttribute("ondragstart","drag(event)");
-              newList.appendChild(document.createTextNode(newValue));
-              list.appendChild(newList);
             }
             function allowDrop(event) {
                event.preventDefault();
