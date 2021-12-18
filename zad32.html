@@ -16,16 +16,16 @@
           height : 80%;
           width : 100%;
           background-color : Lavender;
+          float: bottom;
           position:relative;
         }
         ul{
           position:absolute;
           bottom:0;
         }
-        .generation{
-          height: 12%;
+        #buttonSpace{
+          height:20%;
         }
-
     </style>
   </head>
   <body>
@@ -34,9 +34,10 @@
       </div>
       <div id = "buttonSpace">
         <button type="button" name="button" onclick="generate()">new element</button>
-        </div>
         <div id = "generation">
           </div>
+        </div>
+
 
 
           <script>
@@ -56,6 +57,21 @@
               document.getElementById("generation").appendChild(div);
             }
 
+
+
+
+
+              var input = document.getElementById('form');
+              input.onsubmit = function(event) {
+              event.preventDefault();
+              var newValue = document.getElementById('new').value;
+              var id =document.getElementById("list").getElementsByTagName("li").length;
+              var newList = document.createElement('li');
+              newList.setAttribute("draggable", "true");
+              newList.setAttribute("id", id+1);
+              newList.setAttribute("ondragstart","drag(event)");
+              newList.appendChild(document.createTextNode(newValue));
+              list.appendChild(newList);
             }
             function allowDrop(event) {
                event.preventDefault();
