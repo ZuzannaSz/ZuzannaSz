@@ -3,14 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    
+    <style media="screen">
+      .block{
+          height : 30px;
+          width : 40px;
+          background-color : black;
+      }
+      .gamearena   {
+          height : 80%;
+          width : 100%;
+          background-color : Lavender;
+          position:relative;
+        }
+        ul{
+          position:absolute;
+          bottom:0;
+        }
+    </style>
   </head>
   <body>
-    <div id= "arena">
-
+      <div   id= "arena" class= "gamearena"  ondrop="drop(event)" ondragover="allowDrop(event)">
+        <ul id = "list" style="list-style-type:none;">
+          <li id = "1" draggable="true" ondragstart="drag(event)"  ><div class = "block"> </div></li>
+       </ul>
       </div>
       <div id = "buttonSpace">
-        <<button type="button" name="button" function="generate()"></button>
+        <<button type="button" name="button" onclick="generate"></button>
         </div>
         <div id = "generation">
           </div>
