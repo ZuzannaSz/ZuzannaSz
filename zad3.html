@@ -1,10 +1,22 @@
+
+
+<style>
+
+  li{
+    padding : 5px;
+    background:  Lavender;
+    border : 3px solid black;
+  }
+  }
+  </style>
+
 <div >
   <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
     <ol id = "list">
-     <li id = "1"draggable="true" ondragstart="drag(event)">blue</li>
-     <li id = "2" draggable="true" ondragstart="drag(event)">red</li>
-     <li id = "3"draggable="true" ondragstart="drag(event)">yellow</li>
-      <li id = "4"draggable="true" ondragstart="drag(event)">purple</li>
+      <li id = "1" draggable="true" ondragstart="drag(event)">blue</li>
+      <li id = "2" draggable="true" ondragstart="drag(event)">red</li>
+      <li id = "3" draggable="true" ondragstart="drag(event)">yellow</li>
+      <li id = "4" draggable="true" ondragstart="drag(event)">purple</li>
    </ol>
 
   </div>
@@ -20,9 +32,22 @@
        input.onsubmit = function(event) {
        event.preventDefault();
        var newValue = document.getElementById('new').value;
-       var id =document.getElementById("ol_o").getElementsByTagName("li").length
-       var newList = document.createElement('li draggable="true');
+       var id =document.getElementById("list").getElementsByTagName("li").length
+       var newList = document.createElement('li');
        newList.appendChild(document.createTextNode(newValue));
        list.appendChild(newList);
      }
+     function allowDrop(event) {
+        event.preventDefault();
+      }
+
+      function drag(evevent) {
+        event.dataTransfer.setData("text", event.target.id);
+      }
+
+      function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        event.target.appendChild(document.getElementById(data));
+      }
    </script>
