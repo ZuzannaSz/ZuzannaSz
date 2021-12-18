@@ -1,8 +1,21 @@
 <div >
-     <ol>
-       <li draggable="true"><input type="text"  value="red"></li>
-       <li draggable="true"><input type="text" value="blue"></li>
-       <li draggable="true"><input type="text" value="yellow"></li>
-       <li draggable="true"><input type="text" value="green"></li>
-     </ol>
+  <ol id = "list">
+   <li draggable="true">blue</li>
+   <li draggable="true">red</li>
+   <li draggable="true">yellow</li>
+ </ol>
+ <form  id ="form">
+    <input id = "new" type="text" name="new">
+ </form>
    </div>
+   <script>
+       var list = document.getElementById('list');
+       var input = document.getElementById('form');
+       input.onsubmit = function(event) {
+       event.preventDefault();
+       var newValue = document.getElementById('new').value;
+       var newList = document.createElement('li');
+       newList.appendChild(document.createTextNode(newValue));
+       list.appendChild(newList);
+     }
+   </script>
