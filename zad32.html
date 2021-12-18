@@ -57,22 +57,6 @@
               document.getElementById("generation").appendChild(div);
             }
 
-
-
-
-
-              var input = document.getElementById('form');
-              input.onsubmit = function(event) {
-              event.preventDefault();
-              var newValue = document.getElementById('new').value;
-              var id =document.getElementById("list").getElementsByTagName("li").length;
-              var newList = document.createElement('li');
-              newList.setAttribute("draggable", "true");
-              newList.setAttribute("id", id+1);
-              newList.setAttribute("ondragstart","drag(event)");
-              newList.appendChild(document.createTextNode(newValue));
-              list.appendChild(newList);
-            }
             function allowDrop(event) {
                event.preventDefault();
                event.dataTransfer.dropEffect = 'move';
