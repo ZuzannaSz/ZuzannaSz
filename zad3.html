@@ -18,10 +18,10 @@
   <div >
     <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
       <ol id = "list">
-        <li id = "1" draggable="true" ondragstart="drag(event)"  ondrop="drop(event)">blue</li>
-        <li id = "2" draggable="true" ondragstart="drag(event)"  ondrop="drop(event)">red</li>
-        <li id = "3" draggable="true" ondragstart="drag(event)" ondrop="drop(event)">yellow</li>
-        <li id = "4" draggable="true" ondragstart="drag(event)" ondrop="drop(event)" >purple</li>
+        <li id = "1" draggable="true" ondragstart="drag(event)"  >blue</li>
+        <li id = "2" draggable="true" ondragstart="drag(event)"  >red</li>
+        <li id = "3" draggable="true" ondragstart="drag(event)" >yellow</li>
+        <li id = "4" draggable="true" ondragstart="drag(event)" >purple</li>
      </ol>
 
     </div>
@@ -31,7 +31,7 @@
    </form>
      </div>
      <script>
-        let
+
          var list = document.getElementById('list');
          var input = document.getElementById('form');
          input.onsubmit = function(event) {
@@ -52,12 +52,21 @@
 
         function drag(evevent) {
           event.dataTransfer.setData("text", event.target.id);
+
         }
 
         function drop(event) {
           event.preventDefault();
+
           var data = event.dataTransfer.getData("text");
-          event.target.appendChild(document.getElementById(data));
+          console.log(data);
+          console.log( event.target.id);
+          if (event.target.id=="list"){
+              event.target.appendChild(document.getElementById(data));
+          }
+          else{
+            list.insertBefore(document.getElementById(data), document.getElementById(event.target.id));
+          }
         }
 
      </script>
