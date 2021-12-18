@@ -2,8 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
-    <style media="screen">
+    <style>
       body{
         background-color: LightSeaGreen;
       }
@@ -88,7 +87,7 @@
                    event.target.appendChild(document.getElementById(data));
                }
                else{
-                 list.insertBefore(document.getElementById(data), document.getElementById(event.target.id));
+                 document.getElementById("arena").insertBefore(document.getElementById(data), document.getElementById(event.target.id));
                }
              }
 
