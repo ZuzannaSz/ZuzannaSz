@@ -1,43 +1,29 @@
 
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
 
-<style>
+      li{
+        padding : 5px;
+        background:  Lavender;
+        border : 3px solid black;
+      }
+    </style>
+    <script>
 
-  li{
-    padding : 5px;
-    background:  Lavender;
-    border : 3px solid black;
-  }
-  }
-  </style>
-
-<div >
-  <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <ol id = "list">
-      <li id = "1" draggable="true" ondragstart="drag(event)">blue</li>
-      <li id = "2" draggable="true" ondragstart="drag(event)">red</li>
-      <li id = "3" draggable="true" ondragstart="drag(event)">yellow</li>
-      <li id = "4" draggable="true" ondragstart="drag(event)">purple</li>
-   </ol>
-
-  </div>
-  <div>
- <form  id ="form">
-    <input id = "new" type="text" name="new">
- </form>
-   </div>
-   <script>
-
-       var list = document.getElementById('list');
-       var input = document.getElementById('form');
-       input.onsubmit = function(event) {
-       event.preventDefault();
-       var newValue = document.getElementById('new').value;
-       var id =document.getElementById("list").getElementsByTagName("li").length
-       var newList = document.createElement('li');
-       newList.appendChild(document.createTextNode(newValue));
-       list.appendChild(newList);
-     }
-     function allowDrop(event) {
+      var list = document.getElementById('list');
+      var input = document.getElementById('form');
+      input.onsubmit = function(event) {
+        event.preventDefault();
+        var newValue = document.getElementById('new').value;
+        var id =document.getElementById("list").getElementsByTagName("li").length
+        var newList = document.createElement('li');
+        newList.<param name="draggable" value="true">
+        newList.appendChild(document.createTextNode(newValue));
+        list.appendChild(newList);
+      }
+      function allowDrop(event) {
         event.preventDefault();
       }
 
@@ -50,4 +36,25 @@
         var data = event.dataTransfer.getData("text");
         event.target.appendChild(document.getElementById(data));
       }
-   </script>
+    </script>
+  </head>
+  <body>
+
+
+    <div >
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <ol id = "list">
+          <li id = "1" draggable="true" ondragstart="drag(event)">blue</li>
+          <li id = "2" draggable="true" ondragstart="drag(event)">red</li>
+          <li id = "3" draggable="true" ondragstart="drag(event)">yellow</li>
+          <li id = "4" draggable="true" ondragstart="drag(event)">purple</li>
+        </ol>
+
+      </div>
+      <div>
+        <form  id ="form">
+          <input id = "new" type="text" name="new">
+        </form>
+      </div>
+  </body>
+</html>
