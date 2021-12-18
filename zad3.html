@@ -37,8 +37,9 @@
          input.onsubmit = function(event) {
          event.preventDefault();
          var newValue = document.getElementById('new').value;
-         var id =document.getElementById("list").getElementsByTagName("li").length
+         var id =document.getElementById("list").getElementsByTagName("li").length;
          var newList = document.createElement('li');
+         newList.setAttribute("draggable", "true");
          newList.appendChild(document.createTextNode(newValue));
          list.appendChild(newList);
        }
