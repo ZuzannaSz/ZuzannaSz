@@ -5,8 +5,8 @@
     <title></title>
     <style media="screen">
       .block{
-          height : 30px;
-          width : 40px;
+          height : 40px;
+          width : 50px;
           background-color : black;
       }
       .gamearena   {
@@ -19,6 +19,7 @@
           position:absolute;
           bottom:0;
         }
+
     </style>
   </head>
   <body>
@@ -28,9 +29,56 @@
        </ul>
       </div>
       <div id = "buttonSpace">
-        <<button type="button" name="button" onclick="generate"></button>
+        <button type="button" name="button" onclick="generate">new element</button>
         </div>
         <div id = "generation">
           </div>
+
+
+          <script>
+
+
+
+
+
+
+              var list = document.getElementById('list');
+              var input = document.getElementById('form');
+              input.onsubmit = function(event) {
+              event.preventDefault();
+              var newValue = document.getElementById('new').value;
+              var id =document.getElementById("list").getElementsByTagName("li").length;
+              var newList = document.createElement('li');
+              newList.setAttribute("draggable", "true");
+              newList.setAttribute("id", id+1);
+              newList.setAttribute("ondragstart","drag(event)");
+              newList.appendChild(document.createTextNode(newValue));
+              list.appendChild(newList);
+            }
+            function allowDrop(event) {
+               event.preventDefault();
+               event.dataTransfer.dropEffect = 'move';
+             }
+
+             function drag(evevent) {
+               event.dataTransfer.setData("text", event.target.id);
+
+             }
+
+             function drop(event) {
+               event.preventDefault();
+
+               var data = event.dataTransfer.getData("text");
+               console.log(data);
+               console.log( event.target.id);
+               if (event.target.id=="list"){
+                   event.target.appendChild(document.getElementById(data));
+               }
+               else{
+                 list.insertBefore(document.getElementById(data), document.getElementById(event.target.id));
+               }
+             }
+
+          </script>
   </body>
 </html>
