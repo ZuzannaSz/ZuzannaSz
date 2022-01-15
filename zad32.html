@@ -88,6 +88,7 @@
                var newY = event.pageY-document.getElementById("arena").getBoundingClientRect().top;
                document.getElementById(data).style.left = newX+'px';
                document.getElementById(data).style.top = newY +'px';
+               console.log(document.elementFromPoint(newX,newy))
              }
 
           </script>
