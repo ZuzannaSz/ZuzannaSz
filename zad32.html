@@ -75,12 +75,12 @@
               var newY = event.pageY-document.getElementById("arena").getBoundingClientRect().top-20;
               document.getElementById(data).style.left = newX+'px';
               document.getElementById(data).style.top = newY +'px';
-                var children = document.getElementById("arena").childNodes;
-                children.forEach(function(item){
-                  console.log(item.getBoundingClientRect().top);
-                  console.log(item.getBoundingClientRect().left);
-                });
-
+              var element = document.getElementById('myElement');
+                      var children = element.children;
+                      for(var i=0; i<children.length; i++){
+                          var child = children[i];
+                          console.log(child.style.top)
+                        }
                if (event.target.id=="arena"){
                    event.target.appendChild(document.getElementById(data));
                }
