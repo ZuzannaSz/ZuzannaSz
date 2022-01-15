@@ -75,6 +75,8 @@
                console.log( event.target.id);
               console.log(event.pageX)
               console.log(event.pageY)
+              document.getElementById(data).style.left = event.pageX+'px';
+              docuemnt.getElementById(data).style.top = event.pageY+'px';
                if (event.target.id=="arena"){
                    event.target.appendChild(document.getElementById(data));
                }
