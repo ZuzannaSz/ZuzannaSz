@@ -75,15 +75,19 @@
                console.log( event.target.id);
               console.log(event.pageX)
               console.log(event.pageY)
-              document.getElementById(data).style.left = event.pageX+'px';
-              docuemnt.getElementById(data).style.top = event.pageY+'px';
+
                if (event.target.id=="arena"){
                    event.target.appendChild(document.getElementById(data));
                }
                else{
                  document.getElementById("arena").appendChild(document.getElementById(data));
                }
-
+               var newX = event.pageX;
+               console.log("top")
+               console.log(document.getElementById("arena").getBoundingClientRect().top)
+               var newY = event.pageY-document.getElementById("arena").getBoundingClientRect().top;
+               document.getElementById(data).style.left = newX+'px';
+               document.getElementById(data).style.top = newY +'px';
              }
 
           </script>
