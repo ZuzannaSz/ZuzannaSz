@@ -30,13 +30,14 @@
     </style>
   </head>
   <body>
-      <div   id= "arena" class= "gamearena"  ondrop="drop(event)" ondragover="allowDrop(event)">
 
-      </div>
       <div id = "buttonSpace">
         <button type="button" name="button" onclick="generate()">new element</button>
         <div id = "generation">
           </div>
+        </div>
+        <div   id= "arena" class= "gamearena"  ondrop="drop(event)" ondragover="allowDrop(event)">
+
         </div>
 
 
@@ -80,7 +81,6 @@
 
              function drag(evevent) {
                event.dataTransfer.setData("text", event.target.id);
-
              }
 
              function drop(event) {
@@ -88,12 +88,12 @@
                var data = event.dataTransfer.getData("text");
                console.log(data);
                console.log( event.target.id);
-               if (event.target.id=="arena"){
-                   event.target.appendChild(document.getElementById(data));
-               }
-               else{
-                 document.getElementById("arena").appendChild(document.getElementById(data));
-               }
+               // if (event.target.id=="arena"){
+               //     event.target.appendChild(document.getElementById(data));
+               // }
+               // else{
+               //   document.getElementById("arena").appendChild(document.getElementById(data));
+               // }
              }
 
           </script>
