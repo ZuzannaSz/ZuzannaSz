@@ -73,22 +73,24 @@
                var data = event.dataTransfer.getData("text");
                console.log(data);
                console.log( event.target.id);
-               document.getElementById(data).onmousedown = function(e) {
-                  this.prevX = e.clientX;
-                  this.prevY = e.clientY;
+               document.getElementById(data).onmousedown = function(event) {
+                  this.prevX = event.clientX;
+                  this.prevY = event.clientY;
+                  this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (event.clientX - this.prevX)) + "px";
+                  this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (event.clientY - this.prevY)) + "px";
                   this.mouseDown = true;
                 }
-                document.getElementById(data).onmousemove = function(e) {
+                document.getElementById(data).onmousemove = function(event) {
                   if(this.mouseDown) {
-                    this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (e.clientX - this.prevX)) + "px";
-                    this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (e.clientY - this.prevY)) + "px";
+                    this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (event.clientX - this.prevX)) + "px";
+                    this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (event.clientY - this.prevY)) + "px";
                   }
-                  this.prevX = e.clientX;
-                  this.prevY = e.clientY;
+                  this.prevX = event.clientX;
+                  this.prevY = event.clientY;
                 }
                 document.getElementById(data).onmouseup = function() {
+                    this.mouseDown = false;
 
-                  this.mouseDown = false;
                 }
                if (event.target.id=="arena"){
                    event.target.appendChild(document.getElementById(data));
