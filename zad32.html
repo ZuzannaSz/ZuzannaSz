@@ -11,6 +11,7 @@
           height : 40px;
           width : 50px;
           background-color : black;
+          position: absolute;
       }
       .gamearena   {
           height : 80%;
@@ -43,7 +44,6 @@
           <script>
               const colors = ["red","yellow","blue","lightblue","orange","green","lightgreen","magenta"];
               var list = document.getElementById('list');
-
             function generate(){
               var div = document.createElement("div");
               var id =document.getElementById("arena").getElementsByTagName("div").length;
@@ -55,6 +55,22 @@
               const rand = Math.floor(Math.random() * colors.length);
               div.style.background = colors[rand];
               document.getElementById("generation").appendChild(div);
+              div.onmousedown = function(e) {
+                 this.prevX = e.clientX;
+                 this.prevY = e.clientY;
+                 this.mouseDown = true;
+               }
+               div.onmousemove = function(e) {
+                 if(this.mouseDown) {
+                   this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (e.clientX - this.prevX)) + "px";
+                   this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (e.clientY - this.prevY)) + "px";
+                 }
+                 this.prevX = e.clientX;
+                 this.prevY = e.clientY;
+               }
+               div.onmouseup = function() {
+                 this.mouseDown = false;
+               }
             }
 
             function allowDrop(event) {
