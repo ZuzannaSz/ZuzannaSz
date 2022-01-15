@@ -12,6 +12,7 @@
           width : 50px;
           background-color : black;
           position: absolute;
+          display:block;
           margin: 1px;
       }
       .gamearena   {
@@ -75,29 +76,34 @@
                var prevY = document.getElementById(data).style.top;
               var newX = event.pageX-25;
               var newY = event.pageY-document.getElementById("arena").getBoundingClientRect().top-20;
-
+              var newTop = newY;
+              var newBottom = newY+40;
+              var newLeft = newX;
+              var newRight = newX+50;
               var minDist=64;
               var cantMove =false;
-              // var element = document.getElementById('arena');
-              //         var children = element.children;
-              //         for(var i=0; i<children.length; i++){
-              //             var child = children[i];
-              //             // console.log(parseInt(child.style.top,10))
-              //             var midX = parseInt(child.style.left,10)-25;
-              //             var midY = parseInt(child.style.top,10)-20;
-              //             var a = midX-newX;
-              //             var b = midY-newY;
-              //             var dist = Math.sqrt( (midX-newX)*(midX-newX) + (midY-newY)*(midY-newY) );
-              //             if(dist<minDist){
-              //               distDif = minDist-dist;
-              //               console.log(distDif);
-              //             }
-              //             }
-              var overlap = !(rect1.right < rect2.left ||
-                rect1.left > rect2.right ||
-                rect1.bottom < rect2.top ||
-                rect1.top > rect2.bottom)
-                if(overlap!=true){
+              var element = document.getElementById('arena');
+                      var children = element.children;
+                      for(var i=0; i<children.length; i++){
+                          var child = children[i];
+                          // console.log(parseInt(child.style.top,10))
+                          // var left = parseInt(child.style.left,10);
+                          // var right = parseInt(child.style.right,10)
+                          // var top = parseInt(child.style.top,10);
+                          // var bottom =parseInt(child.style.bottom,10)
+                          // var cantMove = !(right<newLeft|| left > newRight||bottom< newTop || top>newBottom )
+                          // var midX = parseInt(child.style.left,10)-25;
+                          // var midY = parseInt(child.style.top,10)-20;
+                          // var a = midX-newX;
+                          // var b = midY-newY;
+                          // var dist = Math.sqrt( (midX-newX)*(midX-newX) + (midY-newY)*(midY-newY) );
+                          // if(dist<minDist){
+                          //   distDif = minDist-dist;
+                          //   console.log(distDif);
+                          }
+
+
+                if(cantMove!=true){
                   document.getElementById(data).style.left = newX+'px';
                 document.getElementById(data).style.top = newY +'px';
               }
