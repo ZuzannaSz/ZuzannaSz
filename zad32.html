@@ -86,15 +86,7 @@
                   this.prevY = e.clientY;
                 }
                 document.getElementById(data).onmouseup = function() {
-                  var element = document.getElementById('arena');
-                  var children = element.children;
-                  for(var i=0; i<children.length; i++){
-                    var child = children[i];
-                    var bounds  = child.getBoundingClientRect();
-                    if( bounds.top<this.style.top<bounds.bottom and bounds.left<this.style.left<bounds.right){
-                      this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (e.clientX - this.prevX)-(this.style.left)) + "px";
-                      this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (e.clientY - this.prevY)) + "px";
-                    }
+                  
                   this.mouseDown = false;
                 }
                if (event.target.id=="arena"){
