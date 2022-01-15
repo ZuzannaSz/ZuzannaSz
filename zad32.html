@@ -56,22 +56,22 @@
               const rand = Math.floor(Math.random() * colors.length);
               div.style.background = colors[rand];
               document.getElementById("generation").appendChild(div);
-              div.onmousedown = function(e) {
-                 this.prevX = e.clientX;
-                 this.prevY = e.clientY;
-                 this.mouseDown = true;
-               }
-               div.onmousemove = function(e) {
-                 if(this.mouseDown) {
-                   this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (e.clientX - this.prevX)) + "px";
-                   this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (e.clientY - this.prevY)) + "px";
-                 }
-                 this.prevX = e.clientX;
-                 this.prevY = e.clientY;
-               }
-               div.onmouseup = function() {
-                 this.mouseDown = false;
-               }
+              // div.onmousedown = function(e) {
+              //    this.prevX = e.clientX;
+              //    this.prevY = e.clientY;
+              //    this.mouseDown = true;
+              //  }
+              //  div.onmousemove = function(e) {
+              //    if(this.mouseDown) {
+              //      this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (e.clientX - this.prevX)) + "px";
+              //      this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (e.clientY - this.prevY)) + "px";
+              //    }
+              //    this.prevX = e.clientX;
+              //    this.prevY = e.clientY;
+              //  }
+              //  div.onmouseup = function() {
+              //    this.mouseDown = false;
+              //  }
             }
 
             function allowDrop(event) {
@@ -88,12 +88,29 @@
                var data = event.dataTransfer.getData("text");
                console.log(data);
                console.log( event.target.id);
-               // if (event.target.id=="arena"){
-               //     event.target.appendChild(document.getElementById(data));
-               // }
-               // else{
-               //   document.getElementById("arena").appendChild(document.getElementById(data));
-               // }
+               document.getElementById(data).onmousedown = function(e) {
+                  this.prevX = e.clientX;
+                  this.prevY = e.clientY;
+                  this.mouseDown = true;
+                }
+                document.getElementById(data).onmousemove = function(e) {
+                  if(this.mouseDown) {
+                    this.style.left = (Number(this.style.left.substring(0, this.style.left.length-2)) + (e.clientX - this.prevX)) + "px";
+                    this.style.top = (Number(this.style.top.substring(0, this.style.top.length-2)) + (e.clientY - this.prevY)) + "px";
+                  }
+                  this.prevX = e.clientX;
+                  this.prevY = e.clientY;
+                }
+                document.getElementById(data).onmouseup = function() {
+                  this.mouseDown = false;
+                }
+               if (event.target.id=="arena"){
+                   event.target.appendChild(document.getElementById(data));
+               }
+               else{
+                 document.getElementById("arena").appendChild(document.getElementById(data));
+               }
+
              }
 
           </script>
