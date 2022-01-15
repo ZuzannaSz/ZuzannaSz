@@ -75,20 +75,25 @@
                console.log( event.target.id);
               console.log(event.pageX)
               console.log(event.pageY)
+              var newX = event.pageX;
+              console.log("top")
+              console.log(document.getElementById("arena").getBoundingClientRect().top)
+              var newY = event.pageY-document.getElementById("arena").getBoundingClientRect().top;
+              document.getElementById(data).style.left = newX+'px';
+              document.getElementById(data).style.top = newY +'px';
 
+                var children = element.childNodes;
+                children.forEach(function(item){
+                  console.log(item);
+                });
+        
                if (event.target.id=="arena"){
                    event.target.appendChild(document.getElementById(data));
                }
                else{
                  document.getElementById("arena").appendChild(document.getElementById(data));
                }
-               var newX = event.pageX;
-               console.log("top")
-               console.log(document.getElementById("arena").getBoundingClientRect().top)
-               var newY = event.pageY-document.getElementById("arena").getBoundingClientRect().top;
-               document.getElementById(data).style.left = newX+'px';
-               document.getElementById(data).style.top = newY +'px';
-               console.log(document.elementFromPoint(newX,newy))
+
              }
 
           </script>
