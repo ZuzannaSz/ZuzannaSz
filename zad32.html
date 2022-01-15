@@ -12,6 +12,7 @@
           width : 50px;
           background-color : black;
           position: absolute;
+          margin: 1px;
       }
       .gamearena   {
           height : 80%;
@@ -86,7 +87,7 @@
                   this.prevY = e.clientY;
                 }
                 document.getElementById(data).onmouseup = function() {
-                  
+
                   this.mouseDown = false;
                 }
                if (event.target.id=="arena"){
